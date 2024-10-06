@@ -62,8 +62,17 @@ steps:
 
       echo "Reglas de NSG configuradas."
 
-      # Crear una dirección IP pública
-      echo "Creando IP pública..."
+      # Verificar y liberar la IP pública si está en uso
+      echo "Verificando y liberando IP pública si está en uso..."
+      if az network public-ip show --resource-group $(resourceGroupName) --name $(publicIpName) &> /dev/null; then
+        az network public-ip delete --resource-group $(resourceGroupName) --name $(publicIpName)
+        echo "IP pública liberada."
+      else
+        echo "IP pública no existe o ya está liberada."
+      fi
+
+      # Crear una nueva dirección IP pública con zona de disponibilidad 1
+      echo "Creando nueva IP pública con zona de disponibilidad 1..."
       az network public-ip create --resource-group $(resourceGroupName) --name $(publicIpName) --sku Standard --allocation-method Static --zone 1
       echo "IP pública creada."
       az network public-ip wait --resource-group $(resourceGroupName) --name $(publicIpName) --created
