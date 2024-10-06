@@ -64,7 +64,7 @@ steps:
 
       # Crear una dirección IP pública
       echo "Creando IP pública..."
-      az network public-ip create --resource-group $(resourceGroupName) --name $(publicIpName) --sku Standard --allocation-method Static
+      az network public-ip create --resource-group $(resourceGroupName) --name $(publicIpName) --sku Standard --allocation-method Static --zone 1
       echo "IP pública creada."
       az network public-ip wait --resource-group $(resourceGroupName) --name $(publicIpName) --created
 
