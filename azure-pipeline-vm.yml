@@ -5,19 +5,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  azureSubscription: 'examenRecurso' 
+  azureSubscription: 'recursoExamen' 
   location: 'eastus2'
-  resourceGroupName: 'examenRecurso' 
-  virtualNetworkName: 'examen-redvirtual2'
-  subnetName: 'subred2'
-  addressPrefix: '10.0.0.0/16'
+  resourceGroupName: 'recursoExamen' 
+  virtualNetworkName: 'redvirtual'
+  subnetName: 'subred-devops'
+  addressPrefix: '10.0.0.0/24'
   subnetPrefix: '10.0.0.0/26'
-  securityGroupName: 'examen-msg'
-  publicIpName: 'vm-examen-ip'
-  vmName: 'vm-examen'
+  securityGroupName: 'examen-nsg'
+  publicIpName: 'VM-recursoExamen-ip'
+  vmName: 'VM-recursoExamen'
   vmSize: 'Standard_B1s'  
   adminUsername: 'azureuser'
-  adminPassword: 'Examen123456'  
+  adminPassword: 'Examen123456789'  
 
   # Variables de la imagen
   imagePublisher: 'Canonical'
